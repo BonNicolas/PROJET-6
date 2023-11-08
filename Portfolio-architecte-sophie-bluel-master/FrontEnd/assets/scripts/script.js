@@ -42,10 +42,10 @@ btnFilterAll.addEventListener("click", () => {
 
     // CHANGE COLOR BUTTON //
     
-    btnFilterAll.classList.add("portfolio-filters__btn--active")
-    btnFilterObjects.classList.remove("portfolio-filters__btn--active")
-    btnFilterAppartements.classList.remove("portfolio-filters__btn--active")
-    btnFilterHR.classList.remove("portfolio-filters__btn--active")
+    btnFilterAll.classList.add("btn--active")
+    btnFilterObjects.classList.remove("btn--active")
+    btnFilterAppartements.classList.remove("btn--active")
+    btnFilterHR.classList.remove("btn--active")
 
     // CLEAR GALLERY //
 
@@ -66,10 +66,10 @@ btnFilterObjects.addEventListener("click", async () => {
 
     // CHANGE COLOR BUTTON //
 
-    btnFilterAll.classList.remove("portfolio-filters__btn--active")
-    btnFilterObjects.classList.add("portfolio-filters__btn--active")
-    btnFilterAppartements.classList.remove("portfolio-filters__btn--active")
-    btnFilterHR.classList.remove("portfolio-filters__btn--active")
+    btnFilterAll.classList.remove("btn--active")
+    btnFilterObjects.classList.add("btn--active")
+    btnFilterAppartements.classList.remove("btn--active")
+    btnFilterHR.classList.remove("btn--active")
 
 
     // CLEAR GALLERY //
@@ -107,10 +107,10 @@ btnFilterAppartements.addEventListener("click", async () => {
 
      // CHANGE COLOR BUTTON //
 
-     btnFilterAll.classList.remove("portfolio-filters__btn--active")
-     btnFilterObjects.classList.remove("portfolio-filters__btn--active")
-     btnFilterAppartements.classList.add("portfolio-filters__btn--active")
-     btnFilterHR.classList.remove("portfolio-filters__btn--active")
+     btnFilterAll.classList.remove("btn--active")
+     btnFilterObjects.classList.remove("btn--active")
+     btnFilterAppartements.classList.add("btn--active")
+     btnFilterHR.classList.remove("btn--active")
 
     // CLEAR GALLERY //
 
@@ -147,10 +147,10 @@ btnFilterHR.addEventListener("click", async () => {
 
      // CHANGE COLOR BUTTON //
 
-     btnFilterAll.classList.remove("portfolio-filters__btn--active")
-     btnFilterObjects.classList.remove("portfolio-filters__btn--active")
-     btnFilterAppartements.classList.remove("portfolio-filters__btn--active")
-     btnFilterHR.classList.add("portfolio-filters__btn--active")
+     btnFilterAll.classList.remove("btn--active")
+     btnFilterObjects.classList.remove("btn--active")
+     btnFilterAppartements.classList.remove("btn--active")
+     btnFilterHR.classList.add("btn--active")
 
     // CLEAR GALLERY //
 

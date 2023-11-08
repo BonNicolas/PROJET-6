@@ -2,6 +2,8 @@
 /* colors fin */
 /* font */
 /* font FIN */
+/* mixins */
+/* mixins fin */
 #portfolio {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,8 @@
   display: flex;
   margin-bottom: 50px;
 }
-.portfolio-filters__btn {
+
+.btn {
   padding: 8px 15px;
   background: none;
   border: 1px solid #1D6154;
@@ -21,11 +24,64 @@
   font-size: 16px;
   color: #1D6154;
   white-space: nowrap;
+}
+.btn--margin {
   margin-right: 10px;
 }
-.portfolio-filters__btn--active {
+.btn--active {
   background: #1D6154;
   color: white;
+}
+
+.cta {
+  text-decoration: none;
+  color: black;
+}
+.cta:hover {
+  color: #B1663C;
+}
+
+main {
+  padding: 50px 0px;
+  margin-bottom: 280px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login h2 {
+  margin-bottom: 1.5em;
+}
+.login__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login__forgot-pwd {
+  color: black;
+  margin-top: 30px;
+}
+
+.e-mail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.e-mail__label {
+  margin-bottom: 10px;
+}
+.e-mail__input {
+  border: none;
+  outline: none;
+  font-family: "Work Sans";
+  font-size: 20px;
+  background: white;
+  width: 375px;
+  height: 45px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -88,6 +144,7 @@ body {
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
+  background: #fffef8;
 }
 
 header {
