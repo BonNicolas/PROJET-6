@@ -23,7 +23,7 @@ async function getData() {
     for (let i = 0; i < data.length; i++) {
 
         projects.innerHTML += `
-        <figure class="java-${data[i].categoryId}">
+        <figure class="${data[i].categoryId}">
             <img src="${data[i].imageUrl}" alt="${data[i].title}">
             <figcaption>${data[i].title}</figcaption>
         </figure>
