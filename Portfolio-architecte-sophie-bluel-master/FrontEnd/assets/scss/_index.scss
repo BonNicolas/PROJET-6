@@ -1,4 +1,4 @@
-#portfolio{
+#portfolio {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,38 +11,38 @@
 
 }
 
-.btn{
+.btn {
 
     padding: 8px 15px;
-        background: none;
-        border: 1px solid $second-color;
-        border-radius: 30px;
-        font-family: $second-font;
-        font-size: 16px;
-        color: $second-color;
-        white-space: nowrap;
-        
+    background: none;
+    border: 1px solid $second-color;
+    border-radius: 30px;
+    font-family: $second-font;
+    font-size: 16px;
+    color: $second-color;
+    white-space: nowrap;
 
-        &--margin{
-            margin-right: 10px;
-        }
-        
+    &--margin {
+        margin-right: 10px;
+    }
 
-        &--active{
-            background: $second-color;
-            color: white;
-        }
+    &--active {
+        background: $second-color;
+        color: white;
+    }
+
+    &--active-darken {
+        background: darken($second-color, 10%);
+    }
 
 
 }
 
-.cta{
+.cta {
     text-decoration: none;
     color: black;
 
-    &:hover{
+    &:hover {
         color: $primary-color;
     }
 }
-
-
