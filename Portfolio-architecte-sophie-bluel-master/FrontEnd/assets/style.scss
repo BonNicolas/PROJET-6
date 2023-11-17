@@ -1,6 +1,7 @@
 @import "./scss/variables";
 @import "./scss/index";
 @import "./scss/login";
+@import "./scss/modal";
 
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -59,11 +60,16 @@ body {
 	font-size: 14px;
 	background: $main-background-color;
 }
-header {
+.main-header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+
+	&--edit{
+		margin: 100px 0 70px 0;
+	}
 }
+
 section {
 	margin: 50px 0
 }
