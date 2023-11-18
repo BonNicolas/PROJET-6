@@ -9,7 +9,7 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
 
-    &__wrapper{
+    &__wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -20,20 +20,20 @@
         background-color: white;
     }
 
-    &__title{
+    &__title {
         font-family: $primary-font;
         font-weight: 100;
         margin-top: 60px;
         color: black;
     }
 
-    &__line{
+    &__line {
         border: 1px solid rgba(0, 0, 0, 0.2);
         width: 420px;
         margin: 35px 0;
     }
 
-    &__icon{
+    &__cross-icon {
         position: absolute;
         border: none;
         background: transparent;
@@ -41,6 +41,42 @@
         top: 30px;
         right: 30px;
     }
+
+    &__projects {
+        width: 65%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 30px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+
+        & img {
+            width: 90%;
+        }
+
+        & figure {
+            position: relative;
+        }
+
+        & div {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 3px;
+            right: 12px;
+            padding: 9px 5px;
+            border-radius: 2px;
+            background: black;
+        }
+
+        & i {
+            color: white;
+        }
+    }
+
+
+
 }
 
 .edit {
@@ -54,24 +90,22 @@
     width: 100%;
     height: 65px;
 
-    &__text{
+    &__text {
         color: white;
     }
 
-    &__icon{
-        
+    &__icon {
+
         margin-right: 10px;
     }
 }
 
-.portfolio-projects{
+.portfolio-projects {
     display: flex;
     align-items: baseline;
 
-    &__icon{
+    &__icon {
         margin-right: 10px;
         margin-left: 30px;
     }
 }
-
-
