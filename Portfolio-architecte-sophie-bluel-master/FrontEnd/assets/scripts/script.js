@@ -1,3 +1,5 @@
+
+
 const urlAPI = "http://localhost:5678/api/works"
 
 const projects = document.querySelector(".gallery")
@@ -29,7 +31,7 @@ async function getData() {
         </figure>
         `
     }
-    
+
 }
 
 getData()
@@ -41,7 +43,7 @@ getData()
 btnFilterAll.addEventListener("click", () => {
 
     // CHANGE COLOR BUTTON //
-    
+
     btnFilterAll.classList.add("btn--active")
     btnFilterObjects.classList.remove("btn--active")
     btnFilterAppartements.classList.remove("btn--active")
@@ -105,12 +107,12 @@ btnFilterAppartements.addEventListener("click", async () => {
     const response = await fetch(urlAPI)
     const data = await response.json()
 
-     // CHANGE COLOR BUTTON //
+    // CHANGE COLOR BUTTON //
 
-     btnFilterAll.classList.remove("btn--active")
-     btnFilterObjects.classList.remove("btn--active")
-     btnFilterAppartements.classList.add("btn--active")
-     btnFilterHR.classList.remove("btn--active")
+    btnFilterAll.classList.remove("btn--active")
+    btnFilterObjects.classList.remove("btn--active")
+    btnFilterAppartements.classList.add("btn--active")
+    btnFilterHR.classList.remove("btn--active")
 
     // CLEAR GALLERY //
 
@@ -145,12 +147,12 @@ btnFilterHR.addEventListener("click", async () => {
     const response = await fetch(urlAPI)
     const data = await response.json()
 
-     // CHANGE COLOR BUTTON //
+    // CHANGE COLOR BUTTON //
 
-     btnFilterAll.classList.remove("btn--active")
-     btnFilterObjects.classList.remove("btn--active")
-     btnFilterAppartements.classList.remove("btn--active")
-     btnFilterHR.classList.add("btn--active")
+    btnFilterAll.classList.remove("btn--active")
+    btnFilterObjects.classList.remove("btn--active")
+    btnFilterAppartements.classList.remove("btn--active")
+    btnFilterHR.classList.add("btn--active")
 
     // CLEAR GALLERY //
 
@@ -175,6 +177,53 @@ btnFilterHR.addEventListener("click", async () => {
         `
     }
 
-    console.log(filteredHR)
-
 })
+
+
+//****** USER CONNECTION ******//
+
+function userConnected() {
+    const userToken = localStorage.getItem("token")
+    const bannerEdit = document.querySelector(".edit")
+    const loginLogout = document.getElementById("login-logout")
+    const headerAdmin = document.querySelector(".main-header")
+    const projectsEdit = document.querySelector(".portfolio-projects")
+
+    
+    if (userToken !== null) {
+
+        
+        headerAdmin.classList.add("main-header--edit")
+        bannerEdit.style.display = null
+
+
+        loginLogout.innerHTML = "logout"
+        loginLogout.href = "index.html"
+        loginLogout.addEventListener("click", userDisconnected)
+
+
+        projectsEdit.classList.add("portfolio-projects-edit")
+        projectsEdit.innerHTML += `
+            <i class="fa-regular fa-pen-to-square portfolio-projects-edit__icon"></i>
+            <a href="#modal1" class="js-modal cta cta--black">modifier</a>
+            `
+
+        portfolioFilters.style.display = "none"
+
+    }
+}
+
+userConnected();
+
+//****** USER DECONNECTION ******//
+
+function userDisconnected() {
+
+    window.localStorage.clear()
+
+    window.location.reload()
+
+    loginLogout.removeEventListener("click", userDisconnected)
+
+}
+

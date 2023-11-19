@@ -28,7 +28,7 @@ function login() {
 
         if (data.token) {
             window.localStorage.setItem("token", data.token)
-            window.location.href = "index-edit.html"
+            window.location.href = "index.html"
             buttonLogin.classList.add("btn--active-darken")
 
         } else {
@@ -43,4 +43,3 @@ function login() {
 }
 
 login()
-
