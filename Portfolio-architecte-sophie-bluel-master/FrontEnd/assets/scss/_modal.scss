@@ -8,6 +8,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
+    animation: fade-in 500ms both;
 
     &__wrapper {
         display: flex;
@@ -18,6 +19,8 @@
         height: 690px;
         border-radius: 10px;
         background-color: white;
+        animation: slide-from-top 500ms both;  
+
     }
 
     &__title {
@@ -75,9 +78,16 @@
         }
     }
 
-
-
 }
+
+.modal[aria-hidden="true"]{
+    animation-name: fade-out;
+}
+
+.modal[aria-hidden="true"] .modal__wrapper {
+    animation-name: slide-from-bottom;
+}
+
 
 .edit {
     display: flex;
@@ -107,5 +117,48 @@
     &__icon {
         margin-right: 10px;
         margin-left: 30px;
+    }
+}
+
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+
+@keyframes slide-from-top {
+    0%{
+        transform: translateY(-50px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+
+@keyframes slide-from-bottom {
+    0%{
+        transform: translateY(0px);
+    }
+
+    100%{
+        transform: translateY(50px);
     }
 }

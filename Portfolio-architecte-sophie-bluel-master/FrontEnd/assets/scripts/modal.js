@@ -27,14 +27,25 @@ document.querySelectorAll(".js-modal").forEach(a => {
 const closeModal = function (e) {
     if (modal === null) return
     e.preventDefault()
-    modal.style.display = "none"
     modal.setAttribute("aria-hidden", "true")
     modal.removeAttribute("aria-modal")
     modal.removeEventListener("click", closeModal)
     modal.querySelector(".js-modal-close").removeEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation)
-    modal = null
+    const hideModal = function () {
+        modal.style.display = "none"
+        modal.removeEventListener("animationend", hideModal )
+        modal = null
+    }
+
+    modal.addEventListener("animationend", hideModal)
+       
 }
+
+window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" || e.key === "Esc")
+    closeModal(e)
+})
 
 //*** Zone propagation ***//
 
