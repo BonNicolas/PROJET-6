@@ -25,7 +25,7 @@ async function getData() {
     for (let i = 0; i < data.length; i++) {
 
         projects.innerHTML += `
-        <figure class="${data[i].categoryId}">
+        <figure>
             <img src="${data[i].imageUrl}" alt="${data[i].title}">
             <figcaption>${data[i].title}</figcaption>
         </figure>
@@ -182,8 +182,9 @@ btnFilterHR.addEventListener("click", async () => {
 
 //****** USER CONNECTION ******//
 
+const userToken = localStorage.getItem("token")
+
 function userConnected() {
-    const userToken = localStorage.getItem("token")
     const bannerEdit = document.querySelector(".edit")
     const loginLogout = document.getElementById("login-logout")
     const headerAdmin = document.querySelector(".main-header")
@@ -227,3 +228,47 @@ function userDisconnected() {
 
 }
 
+async function getEditProjects() {
+    const response = await fetch(urlAPI)
+    const data = await response.json()
+
+    // GALLERY CREATION //
+
+    for (let i = 0; i < data.length; i++) {
+
+        const figures = document.createElement("figure")
+        const img = document.createElement("img")
+        img.src = data[i].imageUrl
+        img.alt = data[i].title
+        const btnDeleteProjects = document.createElement("div")
+        btnDeleteProjects.id = data[i].id;
+        btnDeleteProjects.classList.add("trash-button")
+        const icons = document.createElement("i")
+        icons.classList.add("fa-solid")
+        icons.classList.add("fa-trash-can")
+        icons.classList.add("fa-xs")
+        modalProjects.appendChild(figures)
+        figures.appendChild(btnDeleteProjects)
+        figures.appendChild(img)
+        btnDeleteProjects.appendChild(icons)
+
+        btnDeleteProjects.addEventListener("click", (event) => {
+            event.preventDefault();
+            deleteProjects(data[i].id)
+        })
+
+    }
+
+}
+
+getEditProjects()
+
+
+async function deleteProjects(id) {
+
+    await fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${userToken}`},
+    })
+
+}

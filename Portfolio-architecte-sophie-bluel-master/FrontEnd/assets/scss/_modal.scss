@@ -8,7 +8,10 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
-    animation: fade-in 500ms both;
+
+    &--animation-modal1 {
+        animation: fade-in 500ms both;
+    }
 
     &__wrapper {
         display: flex;
@@ -19,8 +22,10 @@
         height: 690px;
         border-radius: 10px;
         background-color: white;
-        animation: slide-from-top 500ms both;  
 
+        &--animation-modal1 {
+            animation: slide-from-top 500ms both;
+        }
     }
 
     &__title {
@@ -34,16 +39,30 @@
         border: 1px solid rgba(0, 0, 0, 0.2);
         width: 420px;
         margin: 35px 0;
+
+        &--line-edit {
+            margin-top: 5px;
+        }
+
     }
 
-    &__cross-icon {
+    &__icons {
         position: absolute;
         border: none;
         background: transparent;
         cursor: pointer;
-        top: 30px;
-        right: 30px;
+
+        &--right {
+            top: 30px;
+            right: 30px;
+        }
+
+        &--left {
+            top: 30px;
+            left: 30px;
+        }
     }
+
 
     &__projects {
         width: 65%;
@@ -80,11 +99,19 @@
 
 }
 
-.modal[aria-hidden="true"]{
+.modal--animation-modal1[aria-hidden="true"] {
     animation-name: fade-out;
 }
 
-.modal[aria-hidden="true"] .modal__wrapper {
+.modal--animation-modal2[aria-hidden="true"] {
+    animation-name: fade-out;
+}
+
+.modal--animation-modal1[aria-hidden="true"] .modal__wrapper--animation-modal1 {
+    animation-name: slide-from-bottom;
+}
+
+.modal--animation-modal2[aria-hidden="true"] .modal__wrapper--animation-modal2 {
     animation-name: slide-from-bottom;
 }
 
@@ -105,7 +132,6 @@
     }
 
     &__icon {
-
         margin-right: 10px;
     }
 }
@@ -122,43 +148,74 @@
 
 
 @keyframes fade-in {
-    0%{
+    0% {
         opacity: 0;
     }
 
-    100%{
+    100% {
         opacity: 1;
     }
 }
 
 @keyframes fade-out {
-    0%{
+    0% {
         opacity: 1;
     }
 
-    100%{
+    100% {
         opacity: 0;
     }
 }
 
 
 @keyframes slide-from-top {
-    0%{
+    0% {
         transform: translateY(-50px);
     }
 
-    100%{
+    100% {
         transform: translateY(0px);
     }
 }
 
 
 @keyframes slide-from-bottom {
-    0%{
+    0% {
         transform: translateY(0px);
     }
 
-    100%{
+    100% {
         transform: translateY(50px);
     }
+}
+
+.section-add-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    border-radius: 10px;
+    padding: 20px 0;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    background: $third-color;
+
+    &__container_icon {
+        display: flex;
+        align-items: center;
+        height: 65px;
+        margin-bottom: 15px;
+    }
+
+    &__icon {
+        font-size: 70px;
+        color: darken($third-color, 10%);
+
+    }
+
+    &__subtitles {
+        font-size: 10px;
+    }
+
 }

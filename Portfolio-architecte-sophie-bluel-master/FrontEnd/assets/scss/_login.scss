@@ -46,6 +46,10 @@
         @include shadows ($shadow-light);
         margin-bottom: 35px;
 
+        &--add-photo {
+            width: 415px;
+        }
+
         &--error-login{
             margin-bottom: 25px;
         }

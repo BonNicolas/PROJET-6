@@ -23,8 +23,25 @@
     color: $second-color;
     white-space: nowrap;
 
-    &--margin {
+    &--margin-right {
         margin-right: 10px;
+    }
+
+    &--add-photo {
+        color: darken($third-color, 50%);
+        border: none;
+        font-size: 12px;
+        background: darken($third-color, 10%);
+    }
+
+    &--margin-bottom {
+        margin-bottom: 10px;
+    }
+
+    &--no-active {
+        background: #a7a7a7 ;
+        border: none;
+        color: white;
     }
 
     &--active {
@@ -54,4 +71,8 @@
     &--edit{
         display: flex;
     }
+}
+
+.trash-button {
+    cursor: pointer;
 }

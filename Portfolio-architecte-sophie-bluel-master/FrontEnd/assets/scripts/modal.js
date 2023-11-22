@@ -22,6 +22,7 @@ document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal)
 })
 
+
 //*** Close ***//
 
 const closeModal = function (e) {
@@ -52,27 +53,4 @@ window.addEventListener("keydown", function (e) {
 const stopPropagation = function (e) {
     e.stopPropagation()
 }
-
-
-async function getModalProjects() {
-    const response = await fetch(urlAPI)
-    const data = await response.json()
-
-    // GALLERY CREATION //
-
-    for (let i = 0; i < data.length; i++) {
-
-        modalProjects.innerHTML += `
-        <figure>
-            <div>
-            <i class="fa-solid fa-trash-can fa-xs"></i>
-            </div>
-            <img src="${data[i].imageUrl}" alt="${data[i].title}">
-        </figure>
-        `
-    }
-    
-}
-
-getModalProjects()
 
