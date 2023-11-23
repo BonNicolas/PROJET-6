@@ -228,6 +228,8 @@ function userDisconnected() {
 
 }
 
+const modalProjects = document.querySelector(".modal__projects")
+
 async function getEditProjects() {
     const response = await fetch(urlAPI)
     const data = await response.json()
@@ -272,3 +274,4 @@ async function deleteProjects(id) {
     })
 
 }
+
