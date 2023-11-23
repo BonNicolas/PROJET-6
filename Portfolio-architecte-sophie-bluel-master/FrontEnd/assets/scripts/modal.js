@@ -2,7 +2,7 @@
 
 let modal = null
 
-//****** MODAL ******//
+//****** MODALS ******//
 
 //*** Open ***//
 
@@ -64,6 +64,8 @@ const stopPropagation = function (e) {
     e.stopPropagation()
 }
 
+//*** Modal 2 ***//
+
 const sectionAddPhoto = document.querySelector(".section-add-photo")
 
 const modal2Email = document.querySelector(".e-mail-modal2")
@@ -76,6 +78,10 @@ const modalTitle = document.querySelector(".modal__title")
 
 const btnModalAddPhoto = document.querySelector(".js-btn-modal-add")
 const btnModalValidation = document.querySelector(".js-btn-modal-validation")
+
+const btnAddPhoto = document.querySelector(".btn--add-photo")
+
+
 
 function modalAddPhotos () {
 
@@ -94,8 +100,6 @@ function modalAddPhotos () {
     btnModalAddPhoto.style.display = "none"
     btnModalValidation.style.display = null
 
-
-
 }
 
 function modalReturn () {
@@ -113,7 +117,6 @@ function modalReturn () {
     modalLine.classList.remove("modal__line--edit")
 
     btnModalAddPhoto.style.display = null
-
     btnModalValidation.style.display = "none"
 
 }
