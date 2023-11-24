@@ -118,6 +118,44 @@ function modalReturn () {
 
     btnModalAddPhoto.style.display = null
     btnModalValidation.style.display = "none"
+    addPhotoContainerIcon.style.display = null
+    previewImg.style.display = "none"
 
 }
+
+//*** Add photo preview ***//
+
+const btnModalePreviewImg = document.getElementById("image")
+const previewImg = document.querySelector(".section-add-photo__preview")
+const addPhotoContainerIcon = document.querySelector(".section-add-photo__container_icon")
+
+btnModalePreviewImg.addEventListener("change", (event) => {
+    const imageFiles = event.target.files
+    const imageFilesLength = imageFiles.length
+
+    if (imageFilesLength > 4000) {
+        alert("La taille de l'imagine ne doit pas dépasser 4 mo")
+
+    } else {
+
+        const imageSrc = URL.createObjectURL(imageFiles[0])
+        previewImg.src = imageSrc
+        addPhotoContainerIcon.style.display = "none"
+        previewImg.style.display = null
+        
+    }
+
+})
+
+
+async function modalAddProject () {
+    
+    const addProjectTitle = document.getElementById("title").value
+    const addProjectCategory = document.getElementById("category").value
+    const addProjectImage = previewImg.src
+    
+
+}
+
+
 

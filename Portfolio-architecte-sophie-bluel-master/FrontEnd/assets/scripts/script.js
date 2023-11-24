@@ -22,6 +22,8 @@ async function getData() {
 
     // GALLERY CREATION //
 
+    projects.innerHTML = ""
+
     for (let i = 0; i < data.length; i++) {
 
         projects.innerHTML += `
@@ -209,8 +211,6 @@ function userConnected() {
             <a href="#modal1" class="js-modal cta cta--black">modifier</a>
             `
 
-        portfolioFilters.style.display = "none"
-
     }
 }
 
@@ -236,6 +236,8 @@ async function getEditProjects() {
 
     // GALLERY CREATION //
 
+    modalProjects.innerHTML = ""
+
     for (let i = 0; i < data.length; i++) {
 
         const figures = document.createElement("figure")
@@ -256,7 +258,7 @@ async function getEditProjects() {
 
         btnDeleteProjects.addEventListener("click", (event) => {
             event.preventDefault();
-            deleteProjects(data[i].id)
+            deleteProjects(data[i].id) 
         })
 
     }
@@ -272,6 +274,9 @@ async function deleteProjects(id) {
         method: "DELETE",
         headers: { Authorization: `Bearer ${userToken}`},
     })
+
+    getEditProjects()
+    getData()
 
 }
 

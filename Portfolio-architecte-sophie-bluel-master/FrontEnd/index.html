@@ -28,11 +28,12 @@
 				<div class="modal__projects">
 				</div>
 				<div class="section-add-photo" style="display: none;">
+					<img class="section-add-photo__preview" src="#" alt="Preview Image" style="display: none;">
 					<div class="section-add-photo__container_icon">
 					<i class="section-add-photo__icon fa-regular fa-image fa-2xl"></i>
 					</div>
 					<label for="image" class="btn btn--add-photo btn--margin-bottom">+ Ajouter photo</label>
-					<input type="file" name="image" accept="image/png, image/jpeg">
+					<input id="image" type="file" name="image" accept="image/png, image/jpeg">
 					<p class="section-add-photo__subtitles">jpg, png : 4mo max</p>
 				</div>
 				<div class="e-mail e-mail-modal2" style="display: none;">
@@ -40,7 +41,7 @@
             		<input class="e-mail__input e-mail__input--add-photo" type="text" name="title" id="title">
 					<label class="e-mail__label" for="category">Catégorie</label>
 					<select class="e-mail__input e-mail__input--add-photo" name="category" id="category">
-						<option value=""></option>
+						<option value="0"></option>
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
 						<option value="3">Hôtels & restaurants</option>

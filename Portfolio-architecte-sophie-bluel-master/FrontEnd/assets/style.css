@@ -24,6 +24,7 @@
   font-size: 16px;
   color: #1D6154;
   white-space: nowrap;
+  cursor: pointer;
 }
 .btn--margin-right {
   margin-right: 10px;
@@ -297,6 +298,12 @@
   margin-bottom: 30px;
   background: #e8f1f6;
 }
+.section-add-photo__preview {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 20%;
+  margin-bottom: 15px;
+}
 .section-add-photo__container_icon {
   display: flex;
   align-items: center;
@@ -309,6 +316,9 @@
 }
 .section-add-photo__subtitles {
   font-size: 10px;
+}
+.section-add-photo input {
+  display: none;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/

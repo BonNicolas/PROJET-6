@@ -204,6 +204,12 @@
     margin-bottom: 30px;
     background: $third-color;
 
+    &__preview {
+        object-fit:cover;
+        width: 20%;
+        margin-bottom: 15px;
+    }
+
     &__container_icon {
         display: flex;
         align-items: center;
@@ -219,6 +225,10 @@
 
     &__subtitles {
         font-size: 10px;
+    }
+
+    & input {
+        display: none;
     }
 
 }
