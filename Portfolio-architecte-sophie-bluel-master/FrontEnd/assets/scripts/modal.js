@@ -1,24 +1,22 @@
 
-
 let modal = null
 
 //****** MODALS ******//
 
-//*** Open ***//
+//** Open **//
 
-const openModal = function(e) {
+const openModal = function (e) {
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute("href"))
     target.style.display = null
     target.removeAttribute("aria-hidden")
     target.setAttribute("aria-modal", "true")
-    modal = target 
+    modal = target
     modal.addEventListener("click", closeModal)
     modal.querySelector(".js-modal-close").addEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation)
     modal.querySelector(".js-btn-modal-add").addEventListener("click", modalAddPhotos)
     modal.querySelector(".js-modal-return").addEventListener("click", modalReturn)
-    
 
 }
 
@@ -27,7 +25,7 @@ document.querySelectorAll(".js-modal").forEach(a => {
 })
 
 
-//*** Close ***//
+//*** Close **//
 
 const closeModal = function (e) {
     if (modal === null) return
@@ -39,32 +37,32 @@ const closeModal = function (e) {
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation)
     modal.querySelector(".js-btn-modal-add").removeEventListener("click", modalAddPhotos)
     modal.querySelector(".js-modal-return").addEventListener("click", modalReturn)
-    
-    
 
     const hideModal = function () {
         modal.style.display = "none"
-        modal.removeEventListener("animationend", hideModal )
+        modal.removeEventListener("animationend", hideModal)
         modal = null
     }
 
     modal.addEventListener("animationend", hideModal)
-       
+
 }
+
+//** ESC Close **//
 
 window.addEventListener("keydown", function (e) {
     if (e.key === "Escape" || e.key === "Esc")
-    closeModal(e)
-    
+        closeModal(e)
+
 })
 
-//*** Zone propagation ***//
+//** Zone propagation **//
 
 const stopPropagation = function (e) {
     e.stopPropagation()
 }
 
-//*** Modal 2 ***//
+//** Modal 2 **//
 
 const sectionAddPhoto = document.querySelector(".section-add-photo")
 
@@ -77,13 +75,14 @@ const modalArrowReturn = document.querySelector(".js-modal-return")
 const modalTitle = document.querySelector(".modal__title")
 
 const btnModalAddPhoto = document.querySelector(".js-btn-modal-add")
+
 const btnModalValidation = document.querySelector(".js-btn-modal-validation")
 
 const btnAddPhoto = document.querySelector(".btn--add-photo")
 
 
 
-function modalAddPhotos () {
+function modalAddPhotos() {
 
     modalProjects.style.display = "none"
 
@@ -93,7 +92,7 @@ function modalAddPhotos () {
 
     modalArrowReturn.style.display = null
 
-    modalTitle.innerHTML="Ajout photo"
+    modalTitle.innerHTML = "Ajout photo"
 
     modalLine.classList.add("modal__line--edit")
 
@@ -102,7 +101,7 @@ function modalAddPhotos () {
 
 }
 
-function modalReturn () {
+function modalReturn() {
 
     modalProjects.style.display = null
 
@@ -112,18 +111,78 @@ function modalReturn () {
 
     modalArrowReturn.style.display = "none"
 
-    modalTitle.innerHTML="Galerie photo"
+    modalTitle.innerHTML = "Galerie photo"
 
     modalLine.classList.remove("modal__line--edit")
 
     btnModalAddPhoto.style.display = null
     btnModalValidation.style.display = "none"
-    addPhotoContainerIcon.style.display = null
-    previewImg.style.display = "none"
+
+    modal2Email.reset()
 
 }
 
-//*** Add photo preview ***//
+
+//****** PROJECTS GENERATION IN MODAL ******//
+
+
+const modalProjects = document.querySelector(".modal__projects")
+
+async function getEditProjects() {
+    const response = await fetch(urlAPI)
+    const data = await response.json()
+
+    //** Gallery Creation **//
+
+    modalProjects.innerHTML = ""
+
+    for (let i = 0; i < data.length; i++) {
+
+        const figures = document.createElement("figure")
+        const img = document.createElement("img")
+        img.src = data[i].imageUrl
+        img.alt = data[i].title
+        const btnDeleteProjects = document.createElement("div")
+        btnDeleteProjects.id = data[i].id;
+        btnDeleteProjects.classList.add("trash-button")
+        const icons = document.createElement("i")
+        icons.classList.add("fa-solid")
+        icons.classList.add("fa-trash-can")
+        icons.classList.add("fa-xs")
+        modalProjects.appendChild(figures)
+        figures.appendChild(btnDeleteProjects)
+        figures.appendChild(img)
+        btnDeleteProjects.appendChild(icons)
+
+        btnDeleteProjects.addEventListener("click", (event) => {
+            event.preventDefault();
+            deleteProjects(data[i].id)
+        })
+
+    }
+
+}
+
+getEditProjects()
+
+//****** DELETE PROJECTS IN MODAL ******//
+
+async function deleteProjects(id) {
+
+    await fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${userToken}` },
+    })
+
+    getEditProjects()
+    getData()
+
+}
+
+
+
+//****** ADD PHOTO PREVIEW IN MODAL ******//
+
 
 const btnModalePreviewImg = document.getElementById("image")
 const previewImg = document.querySelector(".section-add-photo__preview")
@@ -142,20 +201,55 @@ btnModalePreviewImg.addEventListener("change", (event) => {
         previewImg.src = imageSrc
         addPhotoContainerIcon.style.display = "none"
         previewImg.style.display = null
-        
     }
 
 })
 
 
-async function modalAddProject () {
-    
-    const addProjectTitle = document.getElementById("title").value
-    const addProjectCategory = document.getElementById("category").value
-    const addProjectImage = previewImg.src
-    
+//****** ADD PROJECTS IN MODAL ******//
 
+
+async function addWork(event) {
+    event.preventDefault();
+
+    const projectTitle = document.getElementById("title").value;
+    const projectCategoryId = document.getElementById("category").value;
+    const projectImage = document.getElementById("image").files[0];
+
+    if (projectTitle === "" || projectCategoryId === "" || projectImage === undefined) {
+        alert("Merci de remplir tous les champs");
+
+    }
+
+    const addProjectData = new FormData();
+    addProjectData.append("title", projectTitle);
+    addProjectData.append("category", projectCategoryId);
+    addProjectData.append("image", projectImage);
+
+    const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${userToken}` },
+        body: addProjectData,
+    });
+
+    if (response.status === 201) {
+        alert("Le projet a bien été ajouté");
+
+        getEditProjects()
+        getData()
+
+    }
 }
+
+
+btnModalValidation.addEventListener("click", addWork);
+
+
+
+
+
+
+
 
 
 

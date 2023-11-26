@@ -36,7 +36,7 @@
 					<input id="image" type="file" name="image" accept="image/png, image/jpeg">
 					<p class="section-add-photo__subtitles">jpg, png : 4mo max</p>
 				</div>
-				<div class="e-mail e-mail-modal2" style="display: none;">
+				<form class="e-mail e-mail-modal2" style="display: none;">
 					<label class="e-mail__label" for="title">Titre</label>
             		<input class="e-mail__input e-mail__input--add-photo" type="text" name="title" id="title">
 					<label class="e-mail__label" for="category">Catégorie</label>
@@ -46,11 +46,11 @@
 						<option value="2">Appartements</option>
 						<option value="3">Hôtels & restaurants</option>
 					</select>
-				</div>
+				</form>
 					<div class="modal__line">
 					</div>
 					<button class="btn btn--active js-btn-modal-add">Ajouter une photo</button>
-					<button class="btn btn--no-active js-btn-modal-validation" style="display: none;">Valider</button>
+					<button class="btn btn--no-active js-btn-modal-validation" style="display: none;" type="submit">Valider</button>
 		</div>
 	</aside>
 <header class="main-header">
