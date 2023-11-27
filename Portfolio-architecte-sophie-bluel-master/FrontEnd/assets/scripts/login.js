@@ -32,6 +32,7 @@ function login() {
             buttonLogin.classList.add("btn--active-darken")
 
         } else {
+            errorMessage.innerHTML = ""
             errorMessage.innerHTML+=`Email ou mot de passe incorrect,<br/>veuillez corriger les informations saisies.`;
             errorMessage.classList.add("error-login--margin")
             fieldPassword.classList.add("e-mail__input--error-login")

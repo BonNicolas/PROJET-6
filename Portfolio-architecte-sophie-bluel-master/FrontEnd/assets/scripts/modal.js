@@ -169,11 +169,12 @@ getEditProjects()
 
 async function deleteProjects(id) {
 
-    await fetch(`http://localhost:5678/api/works/${id}`, {
+    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${userToken}` },
     })
 
+    alert("Le projet a bien été supprimé");
     getEditProjects()
     getData()
 
@@ -232,13 +233,10 @@ async function addWork(event) {
         body: addProjectData,
     });
 
-    if (response.status === 201) {
-        alert("Le projet a bien été ajouté");
+    alert("Le projet a bien été ajouté");
+    getEditProjects()
+    getData()
 
-        getEditProjects()
-        getData()
-
-    }
 }
 
 
