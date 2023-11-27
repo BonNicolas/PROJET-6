@@ -33,7 +33,7 @@ function login() {
 
         } else {
             errorMessage.innerHTML = ""
-            errorMessage.innerHTML+=`Email ou mot de passe incorrect,<br/>veuillez corriger les informations saisies.`;
+            errorMessage.innerHTML+=`Erreur dans l’identifiant ou le mot de passe.`;
             errorMessage.classList.add("error-login--margin")
             fieldPassword.classList.add("e-mail__input--error-login")
 

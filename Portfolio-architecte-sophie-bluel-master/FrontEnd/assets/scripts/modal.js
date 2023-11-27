@@ -3,6 +3,8 @@ let modal = null
 
 //****** MODALS ******//
 
+//** Modal 1 **//
+
 //** Open **//
 
 const openModal = function (e) {
@@ -240,7 +242,7 @@ async function addWork(event) {
 }
 
 
-btnModalValidation.addEventListener("click", addWork);
+btnModalValidation.addEventListener("click", addWork)
 
 
 
