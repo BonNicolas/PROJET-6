@@ -38,6 +38,9 @@
 .btn--margin-bottom {
   margin-bottom: 10px;
 }
+.btn--modal {
+  margin-bottom: 45px;
+}
 .btn--no-active {
   background: #a7a7a7;
   border: none;
@@ -147,7 +150,6 @@
   align-items: center;
   position: relative;
   width: 640px;
-  height: 690px;
   border-radius: 10px;
   background-color: white;
 }
