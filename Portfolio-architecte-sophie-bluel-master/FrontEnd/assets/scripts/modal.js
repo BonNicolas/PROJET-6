@@ -109,6 +109,11 @@ function modalReturn() {
 
     sectionAddPhoto.style.display = "none"
 
+    addPhotoContainerIcon.style.display = null
+
+    previewImg.style.display = "none"
+    previewImg.src= "#"
+  
     modal2Email.style.display = "none"
 
     modalArrowReturn.style.display = "none"
@@ -131,8 +136,8 @@ function modalReturn() {
 const modalProjects = document.querySelector(".modal__projects")
 
 async function getEditProjects() {
-    const response = await fetch(urlAPI)
-    const data = await response.json()
+
+    await getData()
 
     //** Gallery Creation **//
 
@@ -178,7 +183,7 @@ async function deleteProjects(id) {
 
     alert("Le projet a bien été supprimé");
     getEditProjects()
-    getData()
+    filteredProjects()
 
 }
 
@@ -196,14 +201,17 @@ btnModalePreviewImg.addEventListener("change", (event) => {
     const imageFilesLength = imageFiles.length
 
     if (imageFilesLength > 4000) {
+        
         alert("La taille de l'imagine ne doit pas dépasser 4 mo")
 
     } else {
 
         const imageSrc = URL.createObjectURL(imageFiles[0])
-        previewImg.src = imageSrc
         addPhotoContainerIcon.style.display = "none"
+        previewImg.src = imageSrc
         previewImg.style.display = null
+        
+
     }
 
 })
@@ -212,16 +220,16 @@ btnModalePreviewImg.addEventListener("change", (event) => {
 //****** ADD PROJECTS IN MODAL ******//
 
 
-async function addWork(event) {
+async function addProjects(event) {
     event.preventDefault();
 
-    const projectTitle = document.getElementById("title").value;
-    const projectCategoryId = document.getElementById("category").value;
-    const projectImage = document.getElementById("image").files[0];
+    const projectTitle = document.getElementById("title").value
+    const projectCategoryId = document.getElementById("category").value
+    const projectImage = btnModalePreviewImg.files[0]
 
     if (projectTitle === "" || projectCategoryId === "" || projectImage === undefined) {
-        alert("Merci de remplir tous les champs");
 
+        alert("Merci de remplir tous les champs")
     }
 
     const addProjectData = new FormData();
@@ -237,12 +245,12 @@ async function addWork(event) {
 
     alert("Le projet a bien été ajouté");
     getEditProjects()
-    getData()
-
+    filteredProjects()
+    
 }
 
 
-btnModalValidation.addEventListener("click", addWork)
+btnModalValidation.addEventListener("click", addProjects)
 
 
 
