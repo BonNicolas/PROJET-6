@@ -228,7 +228,7 @@ async function addProjects(event) {
     const projectCategoryId = document.getElementById("category").value;
     const projectImage = btnModalePreviewImg.files[0];
 
-    if (projectTitle === "" || projectCategoryId === "" || projectImage === undefined) {
+    if (projectTitle === "" || projectCategoryId === "0" || projectImage === undefined) {
 
         alert("Merci de remplir tous les champs");
 
