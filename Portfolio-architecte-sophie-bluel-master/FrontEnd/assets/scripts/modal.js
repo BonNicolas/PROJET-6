@@ -239,7 +239,7 @@ async function addProjects(event) {
         addProjectData.append("category", projectCategoryId);
         addProjectData.append("image", projectImage);
 
-        const response = await fetch("http://localhost:5678/api/works", {
+        const response = await fetch(urlAPI, {
             method: "POST",
             headers: { Authorization: `Bearer ${userToken}` },
             body: addProjectData,

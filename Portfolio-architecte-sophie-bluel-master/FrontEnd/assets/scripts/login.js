@@ -1,4 +1,4 @@
-const urlAPI = "http://localhost:5678/api/users/login";
+const urlAPILogin = "http://localhost:5678/api/users/login";
 const formLogin = document.querySelector("form");
 const buttonLogin = document.querySelector(".btn");
 const errorMessage = document.querySelector(".error-login");
@@ -15,12 +15,12 @@ function login() {
             password: event.target.querySelector("[name=password]").value,
         }
 
-        const playLoad = JSON.stringify(formData);
+        const payload = JSON.stringify(formData);
 
-        const response = await fetch(urlAPI, {
+        const response = await fetch(urlAPILogin, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: playLoad
+            body: payload
 
         })
 
