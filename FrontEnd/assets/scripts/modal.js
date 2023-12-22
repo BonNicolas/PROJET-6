@@ -246,6 +246,11 @@ async function addProjects(event) {
         });
 
         alert("Le projet a bien été ajouté");
+        addPhotoContainerIcon.style.display = null;
+        previewImg.style.display = "none";
+        previewImg.src = "#";
+        btnModalePreviewImg.value = "";
+        modal2Email.reset();
         getEditProjects();
         filteredProjects();
     }
