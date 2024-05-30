@@ -5,8 +5,7 @@ const errorMessage = document.querySelector(".error-login");
 const fieldPassword = document.getElementById("password");
 
 
-function login() {
-
+async function login() {
     formLogin.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -15,32 +14,33 @@ function login() {
             password: event.target.querySelector("[name=password]").value,
         }
 
-        const payload = JSON.stringify(formData);
-
-        const response = await fetch(urlAPILogin, {
+        const payload = {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: payload
+            body: new FormData(formLogin)
+        };
 
-        })
+        try {
+            const response = await myFetch(urlAPILogin, payload);
+            const data = await response.json();
 
-        const data = await response.json();
-
-        if (data.token) {
-            window.localStorage.setItem("token", data.token);
-            window.location.href = "index.html";
-            buttonLogin.classList.add("btn--active-darken");
-
-        } else {
-            errorMessage.innerHTML = "";
-            errorMessage.innerHTML += `Erreur dans l’identifiant ou le mot de passe.`;
+            if (data.token) {
+                window.localStorage.setItem("token", data.token);
+                window.location.href = "index.html";
+                buttonLogin.classList.add("btn--active-darken");
+            } else {
+                // Affiche un message d'erreur si les identifiants sont incorrects
+                errorMessage.innerHTML = "Erreur dans l’identifiant ou le mot de passe.";
+                errorMessage.classList.add("error-login--margin");
+                fieldPassword.classList.add("e-mail__input--error-login");
+            }
+        } catch (error) {
+            // Affiche un message d'erreur en cas d'erreur de connexion
+            errorMessage.innerHTML = "Erreur de connexion. Veuillez réessayer.";
             errorMessage.classList.add("error-login--margin");
             fieldPassword.classList.add("e-mail__input--error-login");
-
         }
-
-    })
-
+    });
 }
+
 
 login();

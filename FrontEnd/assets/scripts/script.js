@@ -19,7 +19,7 @@ let data;
 let filteredData;
 
 async function getData() {
-    const response = await fetch(urlAPI);
+    const response = await myFetch(urlAPI);
     data = await response.json();
 }
 
