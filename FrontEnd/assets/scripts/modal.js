@@ -177,7 +177,7 @@ getEditProjects()
 
 async function deleteProjects(id) {
 
-    const response = await myFetch(`http://localhost:5678/api/works/${id}`, {
+    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${userToken}` },
     })
@@ -228,19 +228,23 @@ async function addProjects(event) {
     const projectCategoryId = document.getElementById("category").value;
     const projectImage = btnModalePreviewImg.files[0];
 
-    if (!projectTitle || projectCategoryId === "0" || !projectImage) {
-        alert("Merci de remplir tous les champs");
-    } else {
-        const payload = {
-            method: 'post',
-            body: {
-                title: projectTitle,
-                categoryId: parseInt(projectCategoryId),
-                imageUrl: URL.createObjectURL(projectImage)
-            }
-        };
+    if (projectTitle === "" || projectCategoryId === "0" || projectImage === undefined) {
 
-        const newProject = await myFetch('http://localhost:5678/api/works', payload);
+        alert("Merci de remplir tous les champs");
+
+    } else {
+
+        const addProjectData = new FormData();
+        addProjectData.append("title", projectTitle);
+        addProjectData.append("category", projectCategoryId);
+        addProjectData.append("image", projectImage);
+
+        const response = await fetch(urlAPI, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${userToken}` },
+            body: addProjectData,
+        });
+
         alert("Le projet a bien été ajouté");
         addPhotoContainerIcon.style.display = null;
         previewImg.style.display = "none";
@@ -250,6 +254,7 @@ async function addProjects(event) {
         getEditProjects();
         filteredProjects();
     }
+
 }
 
 
